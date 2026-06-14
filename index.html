@@ -1,203 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Prompts Tácticos - Mundial 2026</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #4caf50;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #888;
-            margin-bottom: 25px;
-        }
-        .input-group {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .field {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #a5d6a7;
-        }
-        input {
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            background-color: #1e1e1e;
-            color: #fff;
-            font-size: 16px;
-        }
-        input:focus {
-            outline: none;
-            border-color: #4caf50;
-        }
-        textarea {
-            width: 100%;
-            height: 300px;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            background-color: #1e1e1e;
-            color: #fff;
-            font-size: 14px;
-            resize: vertical;
-            box-sizing: border-box;
-            font-family: monospace;
-        }
-        button {
-            width: 100%;
-            padding: 14px;
-            margin-top: 15px;
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .alert {
-            display: none;
-            text-align: center;
-            color: #4caf50;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
 
     <h1>🏆 Analista Táctico - Mundial 2026</h1>
-    <p class="subtitle">Escribe los países para rellenar el prompt de forma automática.</p>
+    <p class="subtitle">Selecciona los países organizados por grupo para actualizar el prompt.</p>
 
     <div class="input-group">
         <div class="field">
-            <label for="equipoA">Equipo A (País)</label>
-            <input type="text" id="equipoA" placeholder="Ej: Argentina" oninput="generarPrompt()">
+            <label for="equipoA">Team A</label>
+            <select id="equipoA" onchange="generarPrompt()">
+                <option value="">Select Country A...</option>
+                <optgroup label="Group A">
+                    <option value="Mexico">🇲🇽 Mexico</option>
+                    <option value="South Africa">🇿🇦 South Africa</option>
+                    <option value="Korea Republic">🇰🇷 South Korea</option>
+                    <option value="Czechia">🇨🇿 Czechia</option>
+                </optgroup>
+                <optgroup label="Group B">
+                    <option value="Canada">🇨🇦 Canada</option>
+                    <option value="Bosnia and Herzegovina">🇧🇦 Bosnia & Herzegovina</option>
+                    <option value="Qatar">🇶🇦 Qatar</option>
+                    <option value="Switzerland">🇨🇭 Switzerland</option>
+                </optgroup>
+                <optgroup label="Group C">
+                    <option value="Brazil">🇧🇷 Brazil</option>
+                    <option value="Morocco">🇲🇦 Morocco</option>
+                    <option value="Haiti">🇭🇹 Haiti</option>
+                    <option value="Scotland">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</option>
+                </optgroup>
+                <optgroup label="Group D">
+                    <option value="United States">🇺🇸 United States</option>
+                    <option value="Paraguay">🇵🇾 Paraguay</option>
+                    <option value="Australia">🇦🇺 Australia</option>
+                    <option value="Turkey">🇹🇷 Turkey</option>
+                </optgroup>
+                <optgroup label="Group E">
+                    <option value="Germany">🇩🇪 Germany</option>
+                    <option value="Curacao">🇨🇼 Curaçao</option>
+                    <option value="Ivory Coast">🇨🇮 Ivory Coast</option>
+                    <option value="Ecuador">🇪🇨 Ecuador</option>
+                </optgroup>
+                <optgroup label="Group F">
+                    <option value="Netherlands">🇳🇱 Netherlands</option>
+                    <option value="Japan">🇯🇵 Japan</option>
+                    <option value="Sweden">🇸🇪 Sweden</option>
+                    <option value="Tunisia">🇹🇳 Tunisia</option>
+                </optgroup>
+                <optgroup label="Group G">
+                    <option value="Belgium">🇧🇪 Belgium</option>
+                    <option value="Egypt">🇪🇬 Egypt</option>
+                    <option value="Iran">🇮🇷 Iran</option>
+                    <option value="New Zealand">🇳🇿 New Zealand</option>
+                </optgroup>
+                <optgroup label="Group H">
+                    <option value="Spain">🇪🇸 Spain</option>
+                    <option value="Cape Verde">🇨🇻 Cape Verde</option>
+                    <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                    <option value="Uruguay">🇺🇾 Uruguay</option>
+                </optgroup>
+                <optgroup label="Group I">
+                    <option value="France">🇫🇷 France</option>
+                    <option value="Senegal">🇸🇳 Senegal</option>
+                    <option value="Iraq">🇮🇶 Iraq</option>
+                    <option value="Norway">🇳🇴 Norway</option>
+                </optgroup>
+                <optgroup label="Group J">
+                    <option value="Argentina">🇦🇷 Argentina</option>
+                    <option value="Algeria">🇩🇿 Algeria</option>
+                    <option value="Austria">🇦🇹 Austria</option>
+                    <option value="Jordan">🇯🇴 Jordan</option>
+                </optgroup>
+                <optgroup label="Group K">
+                    <option value="Portugal">🇵🇹 Portugal</option>
+                    <option value="DR Congo">🇨🇩 DR Congo</option>
+                    <option value="Uzbekistan">🇺🇿 Uzbekistan</option>
+                    <option value="Colombia">🇨🇴 Colombia</option>
+                </optgroup>
+                <optgroup label="Group L">
+                    <option value="England">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</option>
+                    <option value="Croatia">🇭🇷 Croatia</option>
+                    <option value="Ghana">🇬🇭 Ghana</option>
+                    <option value="Panama">🇵🇦 Panama</option>
+                </optgroup>
+            </select>
         </div>
         <div class="field">
-            <label for="equipoB">Equipo B (País)</label>
-            <input type="text" id="equipoB" placeholder="Ej: Francia" oninput="generarPrompt()">
+            <label for="equipoB">Team B</label>
+            <select id="equipoB" onchange="generarPrompt()">
+                <option value="">Select Country B...</option>
+                <optgroup label="Group A">
+                    <option value="Mexico">🇲🇽 Mexico</option>
+                    <option value="South Africa">🇿🇦 South Africa</option>
+                    <option value="Korea Republic">🇰🇷 South Korea</option>
+                    <option value="Czechia">🇨🇿 Czechia</option>
+                </optgroup>
+                <optgroup label="Group B">
+                    <option value="Canada">🇨🇦 Canada</option>
+                    <option value="Bosnia and Herzegovina">🇧🇦 Bosnia & Herzegovina</option>
+                    <option value="Qatar">🇶🇦 Qatar</option>
+                    <option value="Switzerland">🇨🇭 Switzerland</option>
+                </optgroup>
+                <optgroup label="Group C">
+                    <option value="Brazil">🇧🇷 Brazil</option>
+                    <option value="Morocco">🇲🇦 Morocco</option>
+                    <option value="Haiti">🇭🇹 Haiti</option>
+                    <option value="Scotland">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</option>
+                </optgroup>
+                <optgroup label="Group D">
+                    <option value="United States">🇺🇸 United States</option>
+                    <option value="Paraguay">🇵🇾 Paraguay</option>
+                    <option value="Australia">🇦🇺 Australia</option>
+                    <option value="Turkey">🇹🇷 Turkey</option>
+                </optgroup>
+                <optgroup label="Group E">
+                    <option value="Germany">🇩🇪 Germany</option>
+                    <option value="Curacao">🇨🇼 Curaçao</option>
+                    <option value="Ivory Coast">🇨🇮 Ivory Coast</option>
+                    <option value="Ecuador">🇪🇨 Ecuador</option>
+                </optgroup>
+                <optgroup label="Group F">
+                    <option value="Netherlands">🇳🇱 Netherlands</option>
+                    <option value="Japan">🇯🇵 Japan</option>
+                    <option value="Sweden">🇸🇪 Sweden</option>
+                    <option value="Tunisia">🇹🇳 Tunisia</option>
+                </optgroup>
+                <optgroup label="Group G">
+                    <option value="Belgium">🇧🇪 Belgium</option>
+                    <option value="Egypt">🇪🇬 Egypt</option>
+                    <option value="Iran">🇮🇷 Iran</option>
+                    <option value="New Zealand">🇳🇿 New Zealand</option>
+                </optgroup>
+                <optgroup label="Group H">
+                    <option value="Spain">🇪🇸 Spain</option>
+                    <option value="Cape Verde">🇨🇻 Cape Verde</option>
+                    <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                    <option value="Uruguay">🇺🇾 Uruguay</option>
+                </optgroup>
+                <optgroup label="Group I">
+                    <option value="France">🇫🇷 France</option>
+                    <option value="Senegal">🇸🇳 Senegal</option>
+                    <option value="Iraq">🇮🇶 Iraq</option>
+                    <option value="Norway">🇳🇴 Norway</option>
+                </optgroup>
+                <optgroup label="Group J">
+                    <option value="Argentina">🇦🇷 Argentina</option>
+                    <option value="Algeria">🇩🇿 Algeria</option>
+                    <option value="Austria">🇦🇹 Austria</option>
+                    <option value="Jordan">🇯🇴 Jordan</option>
+                </optgroup>
+                <optgroup label="Group K">
+                    <option value="Portugal">🇵🇹 Portugal</option>
+                    <option value="DR Congo">🇨🇩 DR Congo</option>
+                    <option value="Uzbekistan">🇺🇿 Uzbekistan</option>
+                    <option value="Colombia">🇨🇴 Colombia</option>
+                </optgroup>
+                <optgroup label="Group L">
+                    <option value="England">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</option>
+                    <option value="Croatia">🇭🇷 Croatia</option>
+                    <option value="Ghana">🇬🇭 Ghana</option>
+                    <option value="Panama">🇵🇦 Panama</option>
+                </optgroup>
+            </select>
         </div>
     </div>
 
     <label for="promptResultado">Prompt Final:</label>
     <textarea id="promptResultado" readonly></textarea>
 
-    <button onclick="copiarPrompt()">Copiar Prompt Listo</button>
+    <div class="version-container">
+        <button id="btnV1" class="btn-version active" onclick="cambiarVersion(1)">Prompt V1 (Masterclass)</button>
+        <button id="btnV2" class="btn-version" onclick="cambiarVersion(2)">Prompt V2 (Last 900 minutes)</button>
+    </div>
+
+    <button class="btn-copy" onclick="copiarPrompt()">Copiar Prompt Listo</button>
     <div id="alert" class="alert">¡Copiado al portapapeles con éxito!</div>
 
-    <script>
-        // Tu prompt estructurado en una plantilla de JavaScript
-        const promptBase = `# System Persona
-You are a World-Class Professional Football (Soccer) Tactical Analyst, Scouter, and Data Scientist. Your expertise combines elite-level tactical theory (UEFA Pro License standard), deep historical knowledge of international football, and advanced statistical metrics (xG, xA, PPDA, progressive carries, field tilt, and packing rates). Your analysis must be relentlessly granular, objective, and comprehensive.
 
-# Context & Objective
-You are tasked with conducting a profound, exhaustive Pre-Match and Tactical Analysis for an upcoming international fixture between:
-* **Team A:** [Insert Country A]
-* **Team B:** [Insert Country B]
-
-Your goal is to dissect EVERY SINGLE DETAIL of both nations, their systems, and EVERY INDIVIDUAL PLAYER expected to feature in the squad or starting XI. Do not generalize; avoid clichés. Treat this as a professional briefing for an elite technical coaching staff.
-
----
-
-# Execution Framework
-
-## 1. Macro-Level Country & Team Identity Analysis
-For BOTH [Insert Country A] and [Insert Country B], analyze:
-* **Tactical Culture & DNA:** The historical and modern footballing philosophy of the nation (e.g., positional play, high-intensity pressing, low-block counter, vertical pragmatism).
-* **Current Managerial Profile:** The head coach's tactical preferences, flexibility, substitutions patterns, and in-game management history.
-* **Team Dynamics & State of Mind:** Recent form, dressing room atmosphere, pressure from local media, and psychological edge/weakness in tournament/high-stakes scenarios.
-* **Squad Lifecycle:** Is the team in a golden generation, a rebuilding phase, or an aging transition? Analyze squad depth and hierarchy.
-
-## 2. Phase-by-Phase Tactical Dissection (Team vs. Team)
-Break down how both teams behave collectively in the 4 Main Phases of Play:
-* **Attacking Phase (In Possession):** Build-up patterns (e.g., 2-3-5 or 3-2-5 shapes), progression zones, overloads, utilization of half-spaces, and crossing/shooting tendencies.
-* **Defensive Phase (Out of Possession):** Defensive block height (High press, mid-block, or low-block), pressing triggers, defensive width, and line-breaking pass prevention.
-* **Transition to Attack:** Directness, counter-attacking speed, target players, and restructuring speed.
-* **Transition to Defense:** Counter-pressing intensity vs. immediate retreat, tactical fouling tendencies, and vulnerability to rapid transitions.
-* **Set-Pieces:** Offensive and defensive setups (zonal vs. man-marking), key targets, block creators, and trick routines (corners, free-kicks, throw-ins).
-
-## 3. Micro-Level Individual Player Profiles (EVERY SINGLE PLAYER)
-For EVERY player likely to start or act as a key substitute for BOTH countries, provide a hyper-detailed breakdown:
-* **Technical & Physical Attributes:** Elite traits (e.g., press-resistance, 1v1 dribbling success, recovery speed, aerial dominance, weak-foot capability).
-* **Tactical Role & Behavior:** Their specific role (e.g., Inverted Wingback, Mezzala, Raumdeuter, False 9) and positional heat-map tendencies (where they actually move, not just their starting position).
-* **Statistical Impact:** Key metrics relevant to their position (e.g., pass completion under pressure, progressive passes received, tackles/interceptions per 90).
-* **Psychological Profile:** Performance under pressure, leadership, temperament (cards risk), and big-game track record.
-* **Direct Matchups:** Identify the exact opposing player they will face on the pitch and analyze the 1v1 micro-battle (e.g., Left Winger vs. Opposing Right Back).
-
-## 4. Analytical Forecast & Match-Winning Factors
-* **X-Factors:** Unpredictable elements (weather, referee strictness, wildcard bench players).
-* **Critical Tactical Key Battles:** The 3 specific tactical or positional battles that will decide the match.
-* **Game-Script Predictions:** Scenario A (Early goal for Team A), Scenario B (Stalemate), Scenario C (Red card or injury). How will both coaches react?
-* **Final Scoreline & Statistical Prediction:** Most likely tactical outcome and score prediction based strictly on the analysis.
-
----
-
-# Formatting and Style Output Instructions
-* **Tone:** Analytical, sharp, professional, and authoritative. 
-* **Structure:** Use clear Markdown headings, bullet points for readability, and bold text for critical tactical terms or player names.
-* **Granularity:** Do not hold back on length. Be as exhaustive and detailed as possible. If a player is in the squad, they must be analyzed.
-
-Please begin your masterclass analysis for **[Insert Country A] vs. [Insert Country B]** now.`;
-
-        function generarPrompt() {
-            // Tomamos los valores de los inputs, si están vacíos dejamos una línea
-            const eqA = document.getElementById('equipoA').value || '__________';
-            const eqB = document.getElementById('equipoB').value || '__________';
-            
-            // Reemplazamos globalmente todas las variaciones posibles de las etiquetas
-            let promptFinal = promptBase
-                .replaceAll('[Insert Country A]', eqA)
-                .replaceAll('[Insert Country B]', eqB)
-                .replaceAll('[Insert Team A]', eqA)
-                .replaceAll('[Insert Team B]', eqB);
-            
-            document.getElementById('promptResultado').value = promptFinal;
-        }
-
-        function copiarPrompt() {
-            const textarea = document.getElementById('promptResultado');
-            textarea.select();
-            
-            // Método moderno para copiar al portapapeles
-            navigator.clipboard.writeText(textarea.value).then(() => {
-                const alertMsg = document.getElementById('alert');
-                alertMsg.style.display = 'block';
-                setTimeout(() => {
-                    alertMsg.style.display = 'none';
-                }, 2000);
-            }).catch(err => {
-                console.error('Error al copiar: ', err);
-            });
-        }
-
-        // Ejecución inicial para mostrar la plantilla vacía al cargar la página
-        generarPrompt();
-    </script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
